@@ -1,4 +1,4 @@
-package hello.proxy.pureproxy.decorator.code;
+package hello.proxy.pureproxy.concreteproxy.code;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -6,12 +6,12 @@ import lombok.extern.slf4j.Slf4j;
  * @author bumblebee
  */
 @Slf4j
-public class TimeDecorator implements Component{
+public class TimeProxy extends ConcreteLogic {
 
-    private Component component;
+    private ConcreteLogic concreteLogic;
 
-    public TimeDecorator(Component component) {
-        this.component = component;
+    public TimeProxy(ConcreteLogic concreteLogic) {
+        this.concreteLogic = concreteLogic;
     }
 
     @Override
@@ -19,7 +19,7 @@ public class TimeDecorator implements Component{
         log.info("TimeDecorator 실행");
         long startTime = System.currentTimeMillis();
 
-        String result = component.operation();
+        String result = concreteLogic.operation();
 
         long endTime = System.currentTimeMillis();
         long resultTime = endTime - startTime;
